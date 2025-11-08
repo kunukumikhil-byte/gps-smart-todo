@@ -4,11 +4,27 @@ let map, marker, routeControl;
 
 // ✅ Text To Speech
 function speak(text) {
-    let speech = new SpeechSynthesisUtterance(text);
-    speech.rate = 1.0;
-    speech.pitch = 1.0;
-    speech.volume = 1.0;
-    window.speechSynthesis.speak(speech);
+    if (!("speechSynthesis" in window)) {
+        console.log("TTS not supported");
+        return;
+    }
+
+    const utter = new SpeechSynthesisUtterance(text);
+
+    // Optional: choose better voice
+    const voices = speechSynthesis.getVoices();
+    let preferred = voices.find(v => v.lang.includes("en-IN")) || voices[0];
+    utter.voice = preferred;
+    utter.pitch = 1;
+    utter.rate = 1;
+    utter.volume = 1;
+
+    // Required: cancel ongoing speech (fixes no-voice bug)
+    speechSynthesis.cancel();
+
+    setTimeout(() => {
+        speechSynthesis.speak(utter);
+    }, 200);
 }
 
 // ✅ Initialize Map
