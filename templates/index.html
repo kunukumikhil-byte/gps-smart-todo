@@ -1,96 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <meta name="theme-color" content="#f4f8f5">
-    <title>GPS Smart To-Do</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css">
-    <link rel="stylesheet" href="/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f7f3">
+  <meta name="description" content="A location-aware to-do list that helps you save places and find nearby tasks.">
+  <title>GPS Smart To-Do</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <main class="app-shell">
-        <header class="hero">
-            <p class="eyebrow">LOCATION-AWARE PRODUCTIVITY</p>
-            <h1>📍 GPS Smart To-Do</h1>
-            <p class="subtitle">Save places as tasks and navigate to the nearest one.</p>
-        </header>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">⌖</div>
+      <p class="eyebrow">LOCATION-AWARE PRODUCTIVITY</p>
+      <h1>GPS Smart To-Do</h1>
+      <p class="subtitle">Turn places you need to visit into a simple, useful plan.</p>
+    </header>
 
-        <section class="panel" aria-label="Create a task">
-            <label for="taskName">Task name</label>
-            <div class="input-row">
-                <input id="taskName" type="text" maxlength="200" placeholder="e.g. Visit the bank" autocomplete="off">
-                <button id="addTaskButton" type="button" onclick="saveTask()">Add task</button>
-            </div>
-            <label for="searchBox">Find a place</label>
-            <div class="input-row">
-                <input id="searchBox" type="search" placeholder="Search a location or address" autocomplete="off">
-                <button class="secondary" type="button" onclick="searchLocation()">Search</button>
-            </div>
-            <p id="statusMessage" class="status" role="status" aria-live="polite">Allow location access to center the map on you. You can also select a place on the map.</p>
-        </section>
+    <section class="panel composer" aria-labelledby="create-heading">
+      <div class="section-title">
+        <div><p class="eyebrow">GET IT DONE</p><h2 id="create-heading">Add a destination</h2></div>
+        <span class="pill">GPS enabled</span>
+      </div>
+      <form id="taskForm">
+        <label for="taskName">Task name</label>
+        <div class="field-row">
+          <input id="taskName" name="taskName" type="text" maxlength="200" placeholder="e.g. Pick up a parcel" autocomplete="off" required>
+          <button id="addTaskButton" type="submit">Add task <span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+      <label for="searchBox">Search for a place</label>
+      <div class="field-row">
+        <input id="searchBox" type="search" placeholder="Address, business, or landmark" autocomplete="off">
+        <button id="searchButton" class="button-light" type="button">Search</button>
+      </div>
+      <div class="status-line"><span id="statusDot" class="status-dot"></span><p id="statusMessage" role="status" aria-live="polite">Finding your location… You can select a location on the map if GPS is unavailable.</p></div>
+    </section>
 
-        <section class="map-panel" aria-label="Map">
-            <div id="map"></div>
-        </section>
+    <section class="map-card" aria-label="Choose a task location">
+      <div class="map-topbar"><div><p class="eyebrow">YOUR AREA</p><h2>Choose a spot</h2></div><button id="locateButton" class="icon-button" type="button" aria-label="Center map on my location" title="Center on my location">◎</button></div>
+      <div id="map"><div class="map-fallback">Loading map…</div></div>
+      <p class="map-hint">Click the map or drag the pin to set the task location.</p>
+    </section>
 
-        <section class="panel">
-            <div class="section-heading">
-                <div>
-                    <p class="eyebrow">YOUR DESTINATIONS</p>
-                    <h2>Saved tasks</h2>
-                </div>
-                <button class="secondary small" type="button" onclick="loadTasks()">Refresh</button>
-            </div>
-            <div id="taskList" class="task-list"><p class="empty-state">Loading tasks…</p></div>
-        </section>
-        <footer>GPS Smart To-Do · Location permission is used only in your browser for map and distance features.</footer>
-    </main>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-    <script src="/script.js"></script>
+    <section class="panel tasks-panel">
+      <div class="section-title">
+        <div><p class="eyebrow">YOUR PLAN</p><h2>Saved tasks <span id="taskCount" class="count">0</span></h2></div>
+        <button id="refreshButton" class="button-light compact" type="button">Refresh ↻</button>
+      </div>
+      <div id="taskList" class="task-list"><p class="empty-state">Loading your tasks…</p></div>
+    </section>
+    <footer><span>GPS Smart To-Do</span><span>Location access stays in your browser.</span></footer>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+  <script src="/script.js"></script>
 </body>
 </html>
-=======
-    <title>GPS Smart To-Do App</title>
-
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-    <!-- Routing Machine CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-
-<h2>📌 JUPITER TO-DO APP by MIKHIL</h2>
-
-<input id="taskName" type="text" placeholder="Enter task (ex: Go to Bank)">
-<button onclick="saveTask()">➕ Add Task</button>
-<br><br>
-
-<input id="searchBox" type="text" placeholder="Search location">
-<button onclick="searchLocation()">🔍 Search</button>
-
-
-<div id="map"></div>
-
-<h3>🗂 Saved Tasks</h3>
-<div id="taskList"></div>
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<!-- Routing Machine JS -->
-<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
-<!-- Your JS File -->
-<script src="/static/script.js"></script>
-
-</body>
-</html>
->>>>>>> 67432aaa6f4f6a987c8bbf62c57d1b9bb30e3568
