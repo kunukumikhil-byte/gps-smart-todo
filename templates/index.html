@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <meta name="theme-color" content="#f4f8f5">
     <title>GPS Smart To-Do</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -53,3 +54,43 @@
     <script src="/script.js"></script>
 </body>
 </html>
+=======
+    <title>GPS Smart To-Do App</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+    <!-- Routing Machine CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>📌 JUPITER TO-DO APP by MIKHIL</h2>
+
+<input id="taskName" type="text" placeholder="Enter task (ex: Go to Bank)">
+<button onclick="saveTask()">➕ Add Task</button>
+<br><br>
+
+<input id="searchBox" type="text" placeholder="Search location">
+<button onclick="searchLocation()">🔍 Search</button>
+
+
+<div id="map"></div>
+
+<h3>🗂 Saved Tasks</h3>
+<div id="taskList"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Routing Machine JS -->
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<!-- Your JS File -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>
+>>>>>>> 67432aaa6f4f6a987c8bbf62c57d1b9bb30e3568
