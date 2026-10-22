@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f4f8f5">
+    <title>GPS Smart To-Do</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="hero">
+            <p class="eyebrow">LOCATION-AWARE PRODUCTIVITY</p>
+            <h1>📍 GPS Smart To-Do</h1>
+            <p class="subtitle">Save places as tasks and navigate to the nearest one.</p>
+        </header>
+
+        <section class="panel" aria-label="Create a task">
+            <label for="taskName">Task name</label>
+            <div class="input-row">
+                <input id="taskName" type="text" maxlength="200" placeholder="e.g. Visit the bank" autocomplete="off">
+                <button id="addTaskButton" type="button" onclick="saveTask()">Add task</button>
+            </div>
+            <label for="searchBox">Find a place</label>
+            <div class="input-row">
+                <input id="searchBox" type="search" placeholder="Search a location or address" autocomplete="off">
+                <button class="secondary" type="button" onclick="searchLocation()">Search</button>
+            </div>
+            <p id="statusMessage" class="status" role="status" aria-live="polite">Allow location access to center the map on you. You can also select a place on the map.</p>
+        </section>
+
+        <section class="map-panel" aria-label="Map">
+            <div id="map"></div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR DESTINATIONS</p>
+                    <h2>Saved tasks</h2>
+                </div>
+                <button class="secondary small" type="button" onclick="loadTasks()">Refresh</button>
+            </div>
+            <div id="taskList" class="task-list"><p class="empty-state">Loading tasks…</p></div>
+        </section>
+        <footer>GPS Smart To-Do · Location permission is used only in your browser for map and distance features.</footer>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

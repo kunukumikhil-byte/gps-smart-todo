@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    width: 220px;
+    border-radius: 6px;
+    border: 1px solid #666;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #0078ff;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.task {
+    background: #e3f4ff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
